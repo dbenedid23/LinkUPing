@@ -19,7 +19,7 @@ public class UserService {
         try {          
                 uid.createUser(u);
         } catch (Exception e) {
-            
+            e.printStackTrace();
         }
     }
 }
