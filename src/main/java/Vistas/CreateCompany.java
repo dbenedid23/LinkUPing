@@ -17,6 +17,8 @@ public class CreateCompany extends javax.swing.JFrame {
      */
     public CreateCompany() {
         initComponents();
+        JFrame frame = new JFrame("LinkUPing");
+        frame.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +35,6 @@ public class CreateCompany extends javax.swing.JFrame {
         jTextFieldUser = new javax.swing.JTextField();
         jTextFieldDescription = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +77,6 @@ public class CreateCompany extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Login For Companies");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,9 +91,6 @@ public class CreateCompany extends javax.swing.JFrame {
                                 .addComponent(jTextFieldUser, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                                 .addComponent(jPasswordField1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jButtonCrear)))
                 .addContainerGap(88, Short.MAX_VALUE))
@@ -102,8 +98,7 @@ public class CreateCompany extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(9, 9, 9)
+                .addGap(27, 27, 27)
                 .addComponent(jTextFieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,7 +181,6 @@ public class CreateCompany extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrear;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldDescription;
