@@ -18,6 +18,13 @@
         <property name="hbm2ddl.auto">update</property>
          <!-- Entity class mapping -->
         <mapping class="model.User"/>
+        <mapping class="model.AcademicInfo"/>
+        <mapping class="model.Candidature"/>
+        <mapping class="model.Company"/>
+        <mapping class="model.Institution"/>
+        <mapping class="model.JobOffer"/>
+        <mapping class="model.LaboralExperience"/>
+        <mapping class="model.Skill"/>
         
     </session-factory>
 </hibernate-configuration>

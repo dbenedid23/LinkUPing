@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Services.*;
 import javax.swing.JFrame;
 
 /**
@@ -161,23 +162,33 @@ public class CreateCompany extends javax.swing.JFrame {
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
         // TODO add your handling code here:
+                String username = jTextFieldUser.getText();
+        String description = jTextFieldDescription.getText();
+        String password = jPasswordField1.getText();
+        
+       
+        CompanyService cs = new CompanyService();
+        cs.createCompany(username, description, password);
+        InicioCompany ic = new InicioCompany();
+        dispose();
+        ic.setVisible(true);
     }//GEN-LAST:event_jButtonCrearActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-      
-                new CreateCompany().setVisible(true);
-                JFrame frame = new JFrame("Create Company");
-                frame.setContentPane(new CreateCompany().jPanel1);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setSize(500, 300);
-                frame.setLocationRelativeTo(null);//Asi nos sale centrada la ventana
-                frame.setVisible(true);
-         
-    }
+//    public static void main(String args[]) {
+//      
+//                new CreateCompany().setVisible(true);
+//                JFrame frame = new JFrame("Create Company");
+//                frame.setContentPane(new CreateCompany().jPanel1);
+//                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                frame.pack();
+//                frame.setSize(500, 300);
+//                frame.setLocationRelativeTo(null);//Asi nos sale centrada la ventana
+//                frame.setVisible(true);
+//         
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrear;

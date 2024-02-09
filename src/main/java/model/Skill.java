@@ -3,32 +3,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author dev
+ * @author devo
  */
 @Entity
 @Table(name = "skills")
-public class Skills {
-
-    
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
     @Column(name = "nombre", nullable = false)
     private String nombre;
-    
-        @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+        @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE})
         @JoinTable(
             name = "Skill users",
             joinColumns = @JoinColumn(name = "skill_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
         )
-        private List<User> users;
+        private List<User> users = new ArrayList<>();
+    @ManyToMany(mappedBy = "skill", fetch = FetchType.LAZY)
+    private List<JobOffer> jobOffer = new ArrayList<>();
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<JobOffer> getJobOffer() {
+        return jobOffer;
+    }
+
+    public void setJobOffer(List<JobOffer> jobOffer) {
+        this.jobOffer = jobOffer;
+    }
 
     public int getId() {
         return id;
@@ -46,14 +63,11 @@ public class Skills {
         this.nombre = nombre;
     }
 
-    public Skills() {
-    }
 
-    public Skills(int id, String nombre) {
-        this.id = id;
+
+
+
+    public Skill(String nombre) {
         this.nombre = nombre;
     }
-
-
-    
 }

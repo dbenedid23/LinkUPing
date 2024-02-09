@@ -5,6 +5,7 @@
 package Vistas;
 
 import javax.swing.JFrame;
+import Services.*;
 
 /**
  *
@@ -42,6 +43,11 @@ public class CreateUser extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jButtonCrear.setText("Crear Usuario");
+        jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearActionPerformed(evt);
+            }
+        });
 
         jTextFieldUser.setText("Introduzca su usuario");
         jTextFieldUser.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -209,21 +215,35 @@ public class CreateUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldMailFocusLost
 
+    private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+        // TODO add your handling code here:
+        String username = jTextFieldUser.getText();
+        String description = jTextFieldDescription.getText();
+        String password = jPasswordField1.getText();
+        int phone = Integer.parseInt(jTextFieldPhone.getText());
+        String email = jTextFieldMail.getText();
+        UserService us = new UserService();
+        us.createUser(username, description, phone, email, password);
+        InicioUser iu = new InicioUser();
+        dispose();
+        iu.setVisible(true);
+    }//GEN-LAST:event_jButtonCrearActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-      
-                new CreateUser().setVisible(true);
-                JFrame frame = new JFrame("Create User");
-                frame.setContentPane(new CreateUser().jPanel1);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setSize(500, 300);
-                frame.setLocationRelativeTo(null);//Asi nos sale centrada la ventana
-                frame.setVisible(true);
-         
-    }
+//    public static void main(String args[]) {
+//      
+//                new CreateUser().setVisible(true);
+//                JFrame frame = new JFrame("Create User");
+//                frame.setContentPane(new CreateUser().jPanel1);
+//                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                frame.pack();
+//                frame.setSize(500, 300);
+//                frame.setLocationRelativeTo(null);//Asi nos sale centrada la ventana
+//                frame.setVisible(true);
+//         
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrear;

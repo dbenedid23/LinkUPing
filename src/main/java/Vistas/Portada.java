@@ -4,7 +4,9 @@
  */
 package Vistas;
 
+import Utils.HibernateUtil;
 import javax.swing.JFrame;
+import org.hibernate.Session;
 
 /**
  *
@@ -35,6 +37,7 @@ public class Portada extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 102));
 
@@ -96,16 +99,23 @@ public class Portada extends javax.swing.JFrame {
 
     private void jButtonUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserActionPerformed
         // TODO add your handling code here:
+        // Obtener una sesión de Hibernate
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        
         InicioUser ini = new InicioUser();
-        ini.setVisible(true);
-        //ini.dispose();
         dispose();
+        ini.setVisible(true);
+        
+        
     }//GEN-LAST:event_jButtonUserActionPerformed
 
     private void jButtonCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompanyActionPerformed
         // TODO add your handling code here:
+        Session session = HibernateUtil.getSessionFactory().openSession();
         InicioCompany ini = new InicioCompany();
+        dispose();
         ini.setVisible(true);
+       
     }//GEN-LAST:event_jButtonCompanyActionPerformed
     
 

@@ -4,7 +4,9 @@
  */
 package dao;
 
-import model.User;
+import model.*;
+
+import java.util.List;
 
 /**
  *
@@ -13,4 +15,15 @@ import model.User;
 public interface UserDAO {
     void createUser(User u);
     void addSkill(String skillName);
+    List<AcademicInfo> getUserAcademicInfo(User u);
+    void removeUser(User u);
+    User getUser(int id);
+    List<Skill> getUserSkills(User u);
+    List<Candidature> getUserCandidatures(User u);
+    List<User> getUsersByName(String name);
+    void updateUser(User u);
+    List<LaboralExperience> getUserLaboralExperience(User u);
+    User getUserByName(String name);
+    
+    //Select con criteria
 }
