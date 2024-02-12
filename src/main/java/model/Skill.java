@@ -21,7 +21,7 @@ public class Skill {
     private int id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
-        @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE})
+        @ManyToMany(cascade = {CascadeType.ALL})
         @JoinTable(
             name = "Skill users",
             joinColumns = @JoinColumn(name = "skill_id"),
@@ -63,11 +63,11 @@ public class Skill {
         this.nombre = nombre;
     }
 
-
-
-
-
     public Skill(String nombre) {
         this.nombre = nombre;
     }
+
+    public Skill() {
+    }
+    
 }

@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Services.UserService;
 import Utils.HibernateUtil;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -164,29 +165,9 @@ public class InicioUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = jTextFieldUser.getText();
         String password = new String(jPasswordField1.getPassword());
-       
-        Transaction transaction = null;
-        try ( Session session = HibernateUtil.getSessionFactory().openSession();){
-            transaction = session.beginTransaction();
+        UserService us = new UserService();
+        us.iniciarUser(nombre, password);
 
-            Query<User> query = session.createQuery("FROM User WHERE nombre = :nombre AND password = :password");
-            query.setParameter("nombre", nombre);
-            query.setParameter("password", password);
-            User user = query.uniqueResult();
-
-            if (user != null) {
-                JOptionPane.showMessageDialog(null, "Login correcto");
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
-            }
-
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroActionPerformed

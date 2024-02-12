@@ -11,6 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import javax.swing.JOptionPane;
+import org.hibernate.query.Query;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -136,7 +138,7 @@ public class UserImplDAO implements UserDAO {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<User> cr = cb.createQuery(User.class);
             Root<User> root = cr.from(User.class);
-            cr.where(cb.equal(root.get("location"), name));
+            cr.where(cb.equal(root.get("nombre"), name));
             return session.createQuery(cr).getResultList();
         } catch (HibernateException hibernateException){
             System.err.println(hibernateException.getMessage());
@@ -149,9 +151,7 @@ public class UserImplDAO implements UserDAO {
         Transaction tx = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
-            if (u.getId() != 0) {
-                session.merge(u);
-            }
+            session.merge(u);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -189,5 +189,33 @@ public class UserImplDAO implements UserDAO {
             return null;
         }
     }
+
+    @Override
+    public void inicioUser(String nombre, String password) {
+          Transaction transaction = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession();){
+            transaction = session.beginTransaction();
+
+            Query<User> query = session.createQuery("FROM User WHERE nombre = :nombre AND password = :password");
+            query.setParameter("nombre", nombre);
+            query.setParameter("password", password);
+            User user = query.uniqueResult();
+
+//           
+// if (user != null) {
+//                JOptionPane.showMessageDialog(null, "Login correcto");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
+//            }
+            transaction.commit();
+//            return user!=null;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+  //          return false;
+        } 
+    }           
     
 }

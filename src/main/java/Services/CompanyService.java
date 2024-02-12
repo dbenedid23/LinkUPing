@@ -35,4 +35,7 @@ public class CompanyService {
     public void addJobOffer(Company co, JobOffer job){
             cid.getCandidaturesByJobOffer(co, job);
     }
+    public void inicioCompany(String name, String password) {
+        cid.iniciarCompany(name, password);
+    }
 }

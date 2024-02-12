@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.*;
 
 import java.util.List;
+import javax.swing.JOptionPane;
+import org.hibernate.query.Query;
 
 public class CompanyImplDAO implements CompanyDAO{
     @Override
@@ -118,5 +120,30 @@ public class CompanyImplDAO implements CompanyDAO{
             System.err.println(e.getMessage());
             return null;
         }
+    }
+
+    @Override
+    public void iniciarCompany(String name, String password) {
+          Transaction transaction = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession();){
+            transaction = session.beginTransaction();
+
+            Query<Company> query = session.createQuery("FROM Company WHERE name = :name AND password = :password");
+            query.setParameter("name", name);
+            query.setParameter("password", password);
+            Company company = query.uniqueResult();
+            if (company != null) {
+                JOptionPane.showMessageDialog(null, "Login correcto");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } 
+
     }
 }

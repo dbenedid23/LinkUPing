@@ -19,12 +19,18 @@ public class UserService {
     public void createUser(User  user){
         uid.createUser(user);
     }
-
+    
+    public void getUser(String name) {
+        uid.getUsersByName(name);
+    }
     public User createUser(String userName){
         User u = new User();
         u.setNombre(userName);
         uid.createUser(u);
         return u;
+    }
+    public void iniciarUser(String nombre, String password) {
+        uid.inicioUser(nombre, password);
     }
     public void addJobExperience(User user, LaboralExperience lab, Company co){
         lab.setCompany(co);
@@ -33,15 +39,16 @@ public class UserService {
         uid.updateUser(user);
     }
     public void addSkill(User user, String nombre) {
-        Skill skii = new Skill(nombre);
-        user.getSkills().add(skii);
-        skii.getUsers().add(user);
+        Skill skills = new Skill(nombre);
+        user.getSkills().add(skills);
+        skills.getUsers().add(user);
+        System.out.println(user);
+        
         uid.updateUser(user);
 
     }
     public void addAcademicInfo(User user, AcademicInfo aca){
-        //System.out.println(user);
-
+       
         aca.setUser(user);
         user.getAcademicInfos().add(aca);
         uid.updateUser(user);
@@ -73,11 +80,11 @@ public class UserService {
         user.getAcademicInfos().add(aca);
         uid.updateUser(user);
     }
-    public void addCandidature(User user, JobOffer job, String name, String nameCandidature) {//preguntar mamamio
-
+    public void addCandidature(User user, JobOffer job, String name, String nameCandidature) {//preguntar
+        
     }
-    public void addCandidature(User user, JobOffer job) {//preguntar ozimamamio
-
+    public void addCandidature(User user, JobOffer job) {//preguntar 
+        
     }
     public void removeUser(User user){
         uid.removeUser(user);

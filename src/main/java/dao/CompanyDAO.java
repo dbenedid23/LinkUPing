@@ -14,5 +14,6 @@ public interface CompanyDAO {
     void removeCompany(Company co);
     void createCompany(Company co);
     Company getCompany(int id);
+    void iniciarCompany(String name, String password);
     //
 }

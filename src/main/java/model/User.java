@@ -17,8 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private List<Skill> skills = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -41,6 +40,9 @@ public class User {
     private List<Candidature> candidatures = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<LaboralExperience> laboralExperiences = new ArrayList<>();
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Skill> skills = new ArrayList<>();
+    
     public User() {
     }
 

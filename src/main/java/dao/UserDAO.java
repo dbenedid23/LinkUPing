@@ -24,6 +24,7 @@ public interface UserDAO {
     void updateUser(User u);
     List<LaboralExperience> getUserLaboralExperience(User u);
     User getUserByName(String name);
+    void inicioUser(String nombre, String password);
     
     //Select con criteria
 }
