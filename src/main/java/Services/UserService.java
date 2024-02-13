@@ -80,11 +80,21 @@ public class UserService {
         user.getAcademicInfos().add(aca);
         uid.updateUser(user);
     }
-    public void addCandidature(User user, JobOffer job, String name, String nameCandidature) {//preguntar
-        
+    public void addCandidature(User user, JobOffer job, String coverLetterPath, String name) {//preguntar
+        Candidature ca = new Candidature();
+        ca.setJobOffers(job);
+        ca.setUser(user);
+        ca.setCoverLetterPath(coverLetterPath);
+        ca.setName(name);
+        user.getCandidatures().add(ca);
+        uid.updateUser(user);
     }
     public void addCandidature(User user, JobOffer job) {//preguntar 
-        
+        Candidature ca = new Candidature();
+        ca.setJobOffers(job);
+        ca.setUser(user);
+        user.getCandidatures().add(ca);
+        uid.updateUser(user);
     }
     public void removeUser(User user){
         uid.removeUser(user);
