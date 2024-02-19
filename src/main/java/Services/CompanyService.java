@@ -35,7 +35,12 @@ public class CompanyService {
     public void addJobOffer(Company co, JobOffer job){
             cid.getCandidaturesByJobOffer(co, job);
     }
-    public void inicioCompany(String name, String password) {
-        cid.iniciarCompany(name, password);
+    public boolean inicioCompany(String name, String password) {
+        Company co = cid.iniciarCompany(name, password);
+        if (co != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

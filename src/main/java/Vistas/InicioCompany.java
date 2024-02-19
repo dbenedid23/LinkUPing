@@ -167,7 +167,12 @@ public class InicioCompany extends javax.swing.JFrame {
         String name = jTextFieldUser.getText();
         String password = new String(jPasswordField1.getPassword());
         CompanyService cs = new CompanyService();
-        cs.inicioCompany(name, password);
+       boolean gueno = cs.inicioCompany(name, password);
+        if (gueno) {
+                JOptionPane.showMessageDialog(null, "Login correcto");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
+            }
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

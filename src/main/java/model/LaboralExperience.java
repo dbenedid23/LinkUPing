@@ -1,9 +1,10 @@
 package model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 @Entity
 @Table(name = "LaboralExperiences")
-public class LaboralExperience {
+public class LaboralExperience implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -110,4 +111,10 @@ public class LaboralExperience {
     public void setEndDate(int endDate) {
         this.endDate = endDate;
     }
+
+    @Override
+    public String toString() {
+        return "LaboralExperience{" + "jobTittle=" + jobTittle + ", current=" + current + ", description=" + description + '}';
+    }
+    
 }

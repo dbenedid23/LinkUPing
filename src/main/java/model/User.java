@@ -40,7 +40,7 @@ public class User {
     private List<Candidature> candidatures = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<LaboralExperience> laboralExperiences = new ArrayList<>();
-    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Skill> skills = new ArrayList<>();
     
     public User() {
@@ -57,7 +57,7 @@ public class User {
 
     public List<Skill> getSkills() {
         return skills;
-    }
+    }   
 
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
@@ -145,4 +145,9 @@ public class User {
                 ", mail='" + mail + '\'' +
                 '}';
     }
+
+    public User(String nombre) {
+        this.nombre = nombre;
+    }
+    
 }

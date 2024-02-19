@@ -1,10 +1,11 @@
 package model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "InfoAcademica")
-public class AcademicInfo {
+public class AcademicInfo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -101,6 +102,11 @@ public class AcademicInfo {
     public AcademicInfo() {
     }
 
+    @Override
+    public String toString() {
+        return "AcademicInfo{" + "tittle=" + tittle + ", current=" + current + ", meanScore=" + meanScore + ", institution=" + institution + '}';
+    }
 
+    
 
 }

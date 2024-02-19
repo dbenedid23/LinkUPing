@@ -19,12 +19,14 @@ public interface UserDAO {
     void removeUser(User u);
     User getUser(int id);
     List<Skill> getUserSkills(User u);
+    List<Skill> getUserSkillsByName(String name);
     List<Candidature> getUserCandidatures(User u);
     List<User> getUsersByName(String name);
     void updateUser(User u);
     List<LaboralExperience> getUserLaboralExperience(User u);
     User getUserByName(String name);
-    void inicioUser(String nombre, String password);
+    User inicioUser(String nombre, String password);
+    List<LaboralExperience> getUserLaboralExperience(String name);
+    List<AcademicInfo> getUserAcademic(String name);
     
-    //Select con criteria
 }

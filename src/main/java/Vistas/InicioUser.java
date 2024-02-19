@@ -22,14 +22,15 @@ import org.hibernate.query.Query;
  * @author dev
  */
 public class InicioUser extends javax.swing.JFrame {
-
+    User user;
     /**
      * Creates new form Inicio
      */
     public InicioUser() {
         initComponents();
-
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,7 +167,16 @@ public class InicioUser extends javax.swing.JFrame {
         String nombre = jTextFieldUser.getText();
         String password = new String(jPasswordField1.getPassword());
         UserService us = new UserService();
-        us.iniciarUser(nombre, password);
+        boolean gueno = us.iniciarUser(nombre, password);
+        
+        if (gueno) {
+                JOptionPane.showMessageDialog(null, "Login correcto");
+                UserHome uh = new UserHome(nombre);
+                dispose();
+                uh.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
+            }
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

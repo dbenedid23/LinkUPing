@@ -5,6 +5,7 @@
 package model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +16,24 @@ import java.util.List;
  */
 @Entity
 @Table(name = "skills")
-public class Skill {
+public class Skill implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
-        @ManyToMany(cascade = {CascadeType.ALL})
+        @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
         @JoinTable(
             name = "Skill users",
             joinColumns = @JoinColumn(name = "skill_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
         )
         private List<User> users = new ArrayList<>();
-    @ManyToMany(mappedBy = "skill", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "skill", fetch = FetchType.EAGER)
     private List<JobOffer> jobOffer = new ArrayList<>();
+    private ArrayList<Skill> skill;
 
+    
     public List<User> getUsers() {
         return users;
     }
@@ -68,6 +71,11 @@ public class Skill {
     }
 
     public Skill() {
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{ nombre=" + nombre + '}';
     }
     
 }
