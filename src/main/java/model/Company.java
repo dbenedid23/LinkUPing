@@ -1,6 +1,7 @@
 package model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,16 @@ public class Company {
         this.name = name;
         this.description = description;
         this.password = password;
+    }
+
+//    public Company(String name, String description) {
+//        this.name = name;
+//        this.description = description;
+//    }
+
+    @Override
+    public String toString() {
+        return "Company{" + "name=" + name + ", " + description + '}';
     }
 
 

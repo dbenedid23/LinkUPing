@@ -102,9 +102,9 @@ public class AddSkillUsers extends javax.swing.JFrame {
         UserService us = new UserService();
         String name = jTextField1.getText();
         UserHome usa = new UserHome(nombre);
-        us.getUser(nombre);
-        us.addSkill(nombre, name);
-        dispose();
+        //us.getUser(nombre);
+       // us.addSkill(nombre, name);
+        //dispose();
         usa.setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed

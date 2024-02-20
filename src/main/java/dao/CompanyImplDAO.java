@@ -13,7 +13,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.query.Query;
 
-public class CompanyImplDAO implements CompanyDAO{
+public class CompanyImplDAO implements CompanyDAO {
+
     @Override
     public Company getCompanyByName(String companyName) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -62,14 +63,14 @@ public class CompanyImplDAO implements CompanyDAO{
 
     @Override
     public List<JobOffer> getJobOffers(Company co) {
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<JobOffer> cr = cb.createQuery(JobOffer.class);
             Root<JobOffer> root = cr.from(JobOffer.class);
             Join<JobOffer, Company> jobOfferJoin = root.join("jobOffers");
             cr.where(cb.equal(root, co));
             return session.createQuery(cr).getResultList();
-        } catch (HibernateException hibernateException){
+        } catch (HibernateException hibernateException) {
             System.err.println(hibernateException.getMessage());
             return null;
         }
@@ -124,23 +125,38 @@ public class CompanyImplDAO implements CompanyDAO{
 
     @Override
     public Company iniciarCompany(String name, String password) {
-          Transaction transaction = null;
-          Company company = null;
-        try ( Session session = HibernateUtil.getSessionFactory().openSession();){
+        Transaction transaction = null;
+        Company company = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession();) {
             transaction = session.beginTransaction();
 
             Query<Company> query = session.createQuery("FROM Company WHERE name = :name AND password = :password");
             query.setParameter("name", name);
             query.setParameter("password", password);
-             company = query.uniqueResult();
-           
+            company = query.uniqueResult();
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } 
+        }
         return company;
+    }
+
+    @Override
+    public List<Company> getAllCompanies() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Company> cr = cb.createQuery(Company.class); 
+            Root<Company> root = cr.from(Company.class);
+            cr.select(root); 
+            return session.createQuery(cr).getResultList();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+
+        }
     }
 }

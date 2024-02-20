@@ -67,7 +67,7 @@ public class UserHome extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonShowJobs = new javax.swing.JButton();
         jButtonShowCompanies = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonJobApplied = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,7 +177,6 @@ public class UserHome extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(33, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAddAca)
                         .addGap(62, 62, 62))))
         );
@@ -199,10 +198,10 @@ public class UserHome extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("JobOffers applied");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonJobApplied.setText("JobOffers applied");
+        jButtonJobApplied.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonJobAppliedActionPerformed(evt);
             }
         });
 
@@ -221,7 +220,7 @@ public class UserHome extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonShowCompanies)
-                            .addComponent(jButton1)
+                            .addComponent(jButtonJobApplied)
                             .addComponent(jButtonShowJobs)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -240,7 +239,7 @@ public class UserHome extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jButtonShowCompanies)
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(jButtonJobApplied)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -270,6 +269,9 @@ public class UserHome extends javax.swing.JFrame {
 
     private void jButtonShowJobsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowJobsActionPerformed
         // TODO add your handling code here:
+        ListJobOffers ljo = new ListJobOffers();
+        
+        ljo.setVisible(true);
     }//GEN-LAST:event_jButtonShowJobsActionPerformed
 
     private void jButtonAddSkillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSkillsActionPerformed
@@ -295,11 +297,17 @@ public class UserHome extends javax.swing.JFrame {
 
     private void jButtonShowCompaniesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowCompaniesActionPerformed
         // TODO add your handling code here:
+        ListCompanies lc = new ListCompanies();
+        
+        lc.setVisible(true);
     }//GEN-LAST:event_jButtonShowCompaniesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonJobAppliedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJobAppliedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ListMyApplies lma = new ListMyApplies();
+        
+        lma.setVisible(true);
+    }//GEN-LAST:event_jButtonJobAppliedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,10 +345,10 @@ public class UserHome extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddAca;
     private javax.swing.JButton jButtonAddLabs;
     private javax.swing.JButton jButtonAddSkills;
+    private javax.swing.JButton jButtonJobApplied;
     private javax.swing.JButton jButtonShowCompanies;
     private javax.swing.JButton jButtonShowJobs;
     private javax.swing.JLabel jLabel1;

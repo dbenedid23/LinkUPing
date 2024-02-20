@@ -15,5 +15,6 @@ public interface CompanyDAO {
     void createCompany(Company co);
     Company getCompany(int id);
     Company iniciarCompany(String name, String password);
+    List<Company>getAllCompanies();
     //
 }

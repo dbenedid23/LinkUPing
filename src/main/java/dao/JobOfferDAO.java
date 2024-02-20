@@ -20,4 +20,5 @@ public interface JobOfferDAO {
     List<JobOffer>getJobOffersByWorkDayType(int workDayType);
     void createJobOffer(JobOffer jo);
     List<JobOffer>getJobOffersByCompany(Company co);
+    public List<JobOffer> getAllJobOffers();
 }

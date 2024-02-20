@@ -194,4 +194,19 @@ public class JobOfferImplDAO implements JobOfferDAO{
             return null;
         }
     }
+
+    @Override
+    public List<JobOffer> getAllJobOffers() {
+          try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<JobOffer> cr = cb.createQuery(JobOffer.class); 
+            Root<JobOffer> root = cr.from(JobOffer.class);
+            cr.select(root); 
+            return session.createQuery(cr).getResultList();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+
+        }
+    }
 }

@@ -170,7 +170,10 @@ public class InicioCompany extends javax.swing.JFrame {
        boolean gueno = cs.inicioCompany(name, password);
         if (gueno) {
                 JOptionPane.showMessageDialog(null, "Login correcto");
-            } else {
+                CompanyHome ch = new CompanyHome(name);
+                dispose();
+                ch.setVisible(true);
+        } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos, inténtelo de nuevo");
             }
 

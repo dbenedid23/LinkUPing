@@ -26,12 +26,7 @@ public class JobOfferService {
         JobOffer j = new JobOffer();
         j.setTitle(name);
         j.setCompany(co);
-        JobOfferImplDAO jid = new JobOfferImplDAO();
-        try {
-            jid.createJobOffer(j);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        jid.createJobOffer(j);
         return j;
     }
     public List<Candidature> getCandidaturesJobOffers(JobOffer job){
@@ -39,5 +34,9 @@ public class JobOfferService {
     }
     public void createJobOffer(JobOffer jo){
             jid.createJobOffer(jo);
+    }
+    public List<JobOffer> getJobOffers(){
+        List<JobOffer> jos = jid.getAllJobOffers();
+        return jos;
     }
 }

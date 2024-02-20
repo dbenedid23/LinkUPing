@@ -149,5 +149,11 @@ public class JobOffer {
         this.workDayType = WorkDayType;
     }
 
+    @Override
+    public String toString() {
+        return "JobOffer{" + "title=" + title + ", maxSalary=" + maxSalary + ", details=" + details + ", open=" + open + ", location=" + location + ", requiredCandidates=" + requiredCandidates + ", minSalary=" + minSalary + ", workDayType=" + workDayType + '}';
+    }
+    
+    
 
 }

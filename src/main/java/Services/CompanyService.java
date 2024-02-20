@@ -1,6 +1,7 @@
 package Services;
 import dao.CompanyImplDAO;
 import dao.UserImplDAO;
+import java.util.List;
 import model.Company;
 import model.JobOffer;
 import model.User;
@@ -42,5 +43,9 @@ public class CompanyService {
         } else {
             return false;
         }
+    }
+    public List<Company> getCompanies(){
+        List<Company> comp = cid.getAllCompanies();
+        return comp;
     }
 }

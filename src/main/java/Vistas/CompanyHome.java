@@ -4,7 +4,10 @@
  */
 package Vistas;
 
+import Services.CompanyService;
+import Services.JobOfferService;
 import Services.UserService;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -12,12 +15,21 @@ import Services.UserService;
  */
 public class CompanyHome extends javax.swing.JFrame {
 
+    String nombre;
+
     /**
      * Creates new form UserHome
      */
-    public CompanyHome() {
+    public CompanyHome(String nombre) {
+        this.nombre = nombre;
         initComponents();
+        DefaultListModel modeloLista = new DefaultListModel();
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Perfil"));
+
+        CompanyService cs = new CompanyService();
+        UserService us = new UserService();
+        JobOfferService jb = new JobOfferService();
+        
         
     }
 
@@ -31,51 +43,24 @@ public class CompanyHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabelSkill = new javax.swing.JLabel();
-        jButtonAddSkills = new javax.swing.JButton();
-        jLabelLabExp = new javax.swing.JLabel();
-        jButtonAddLabs = new javax.swing.JButton();
-        jLabelAcademic = new javax.swing.JLabel();
-        jButtonAddAca = new javax.swing.JButton();
+        jLabelJobOffers = new javax.swing.JLabel();
+        jButtonAddJobOffers = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListSkills = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListAcas = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jListLabs = new javax.swing.JList<>();
+        jLabelJobOffers1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButtonShowJobs = new javax.swing.JButton();
-        jButtonShowCompanies = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonShowUsers = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelSkill.setText("Skills");
+        jLabelJobOffers.setText("Ofertas de trabajo");
 
-        jButtonAddSkills.setText("+");
-        jButtonAddSkills.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddJobOffers.setText("+");
+        jButtonAddJobOffers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddSkillsActionPerformed(evt);
-            }
-        });
-
-        jLabelLabExp.setText("Laboral Experiences");
-
-        jButtonAddLabs.setText("+");
-        jButtonAddLabs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddLabsActionPerformed(evt);
-            }
-        });
-
-        jLabelAcademic.setText("Academic Info");
-
-        jButtonAddAca.setText("+");
-        jButtonAddAca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddAcaActionPerformed(evt);
+                jButtonAddJobOffersActionPerformed(evt);
             }
         });
 
@@ -86,20 +71,6 @@ public class CompanyHome extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListSkills);
 
-        jListAcas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jListAcas);
-
-        jListLabs.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jListLabs);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -108,85 +79,46 @@ public class CompanyHome extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelJobOffers1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSkill)
-                                    .addComponent(jLabelAcademic))
+                                .addComponent(jLabelJobOffers)
                                 .addGap(0, 370, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAddSkills, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddAca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddLabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelLabExp)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jButtonAddJobOffers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelSkill)
+                .addComponent(jLabelJobOffers)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jButtonAddSkills))
+                        .addComponent(jButtonAddJobOffers))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelLabExp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelAcademic))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAddLabs)
-                        .addGap(60, 60, 60)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(33, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAddAca)
-                        .addGap(62, 62, 62))))
+                .addGap(28, 28, 28)
+                .addComponent(jLabelJobOffers1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel1.setText("Home");
 
-        jButtonShowJobs.setText("JobOffers");
-        jButtonShowJobs.addActionListener(new java.awt.event.ActionListener() {
+        jButtonShowUsers.setText("Users");
+        jButtonShowUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonShowJobsActionPerformed(evt);
+                jButtonShowUsersActionPerformed(evt);
             }
         });
 
-        jButtonShowCompanies.setText("Companies");
-        jButtonShowCompanies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonShowCompaniesActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("JobOffers applied");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/dev/NetBeansProjects/punieta/src/main/java/Imagenes/business_application_addmale_useradd_insert_add_user_client_2312.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/dev/NetBeansProjects/punieta/src/main/java/Imagenes/person_4_icon-icons.com_68900.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,14 +131,11 @@ public class CompanyHome extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonShowCompanies)
-                            .addComponent(jButton1)
-                            .addComponent(jButtonShowJobs)))
+                        .addComponent(jButtonShowUsers))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,12 +145,8 @@ public class CompanyHome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButtonShowJobs)
-                .addGap(37, 37, 37)
-                .addComponent(jButtonShowCompanies)
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtonShowUsers)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,30 +173,14 @@ public class CompanyHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonShowJobsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowJobsActionPerformed
+    private void jButtonShowUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowUsersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonShowJobsActionPerformed
+    }//GEN-LAST:event_jButtonShowUsersActionPerformed
 
-    private void jButtonAddSkillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSkillsActionPerformed
+    private void jButtonAddJobOffersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddJobOffersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddSkillsActionPerformed
+    }//GEN-LAST:event_jButtonAddJobOffersActionPerformed
 
-    private void jButtonAddAcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddAcaActionPerformed
-
-    private void jButtonAddLabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLabsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddLabsActionPerformed
-
-    private void jButtonShowCompaniesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowCompaniesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonShowCompaniesActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-    
     /**
      * @param args the command line arguments
      */
@@ -309,24 +218,15 @@ public class CompanyHome extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonAddAca;
-    private javax.swing.JButton jButtonAddLabs;
-    private javax.swing.JButton jButtonAddSkills;
-    private javax.swing.JButton jButtonShowCompanies;
-    private javax.swing.JButton jButtonShowJobs;
+    private javax.swing.JButton jButtonAddJobOffers;
+    private javax.swing.JButton jButtonShowUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelAcademic;
-    private javax.swing.JLabel jLabelLabExp;
-    private javax.swing.JLabel jLabelSkill;
-    private javax.swing.JList<String> jListAcas;
-    private javax.swing.JList<String> jListLabs;
+    private javax.swing.JLabel jLabelJobOffers;
+    private javax.swing.JLabel jLabelJobOffers1;
     private javax.swing.JList<String> jListSkills;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
