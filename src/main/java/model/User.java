@@ -40,7 +40,7 @@ public class User {
     private List<Candidature> candidatures = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<LaboralExperience> laboralExperiences = new ArrayList<>();
-    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Skill> skills = new ArrayList<>();
     
     public User() {
@@ -91,10 +91,6 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -138,7 +134,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", description='" + description + '\'' +
                 ", telephone=" + telephone +

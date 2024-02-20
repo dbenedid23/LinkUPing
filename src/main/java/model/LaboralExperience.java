@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @Table(name = "LaboralExperiences")
-public class LaboralExperience implements Serializable{
+public class LaboralExperience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

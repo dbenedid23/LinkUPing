@@ -22,14 +22,14 @@ public class Skill implements Serializable{
     private int id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
-        @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
+        @ManyToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY )
         @JoinTable(
             name = "Skill users",
             joinColumns = @JoinColumn(name = "skill_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
         )
         private List<User> users = new ArrayList<>();
-    @ManyToMany(mappedBy = "skill", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "skill", fetch = FetchType.LAZY)
     private List<JobOffer> jobOffer = new ArrayList<>();
     private ArrayList<Skill> skill;
 
