@@ -104,7 +104,7 @@ public class AddLabExperienceUsers extends javax.swing.JFrame {
         UserHome usa = new UserHome(nombre);
 
         dispose();
-        usa.setVisible(true);
+        //usa.setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -104,6 +104,7 @@ public class AddSkillUsers extends javax.swing.JFrame {
         UserHome usa = new UserHome(nombre);
         us.getUser(nombre);
         us.addSkill(nombre, name);
+        //us.addSkill(user, nombre);
         //dispose();
         usa.setVisible(true);
        

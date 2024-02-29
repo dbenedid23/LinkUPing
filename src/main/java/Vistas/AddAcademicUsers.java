@@ -104,7 +104,7 @@ public class AddAcademicUsers extends javax.swing.JFrame {
         UserHome usa = new UserHome(nombre);
         //us.addAcademicInfo(user, aca);
         dispose();
-        usa.setVisible(true);
+       // usa.setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 

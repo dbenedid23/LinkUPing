@@ -28,5 +28,7 @@ public interface UserDAO {
     User inicioUser(String nombre, String password);
     List<LaboralExperience> getUserLaboralExperience(String name);
     List<AcademicInfo> getUserAcademic(String name);
-    
+    User getByUser(User u);
+         
+     
 }

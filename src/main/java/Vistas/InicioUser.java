@@ -167,8 +167,8 @@ public class InicioUser extends javax.swing.JFrame {
         String nombre = jTextFieldUser.getText();
         String password = new String(jPasswordField1.getPassword());
         UserService us = new UserService();
-        boolean gueno = us.iniciarUser(nombre, password);
-        
+       boolean gueno = us.iniciarUser(nombre, password);
+       //boolean gueno = us.login(user);
         if (gueno) {
                 JOptionPane.showMessageDialog(null, "Login correcto");
                 UserHome uh = new UserHome(nombre);

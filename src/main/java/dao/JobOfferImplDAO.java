@@ -100,7 +100,7 @@ public class JobOfferImplDAO implements JobOfferDAO{
             CriteriaQuery<Candidature> cr = cb.createQuery(Candidature.class);
             Root<Candidature> root = cr.from(Candidature.class);
             Join<Candidature, JobOffer> jobOfferJoin = root.join("candidature");
-            cr.where(cb.equal(root, jo));
+            cr.where(cb.equal(jobOfferJoin, jo));
             return session.createQuery(cr).getResultList();
         } catch (HibernateException hibernateException){
             System.err.println(hibernateException.getMessage());
@@ -129,7 +129,7 @@ public class JobOfferImplDAO implements JobOfferDAO{
             CriteriaQuery<JobOffer> cr = cb.createQuery(JobOffer.class);
             Root<JobOffer> root = cr.from(JobOffer.class);
             Join<JobOffer, Skill> jobOfferSkillJoin = root.join("skill");
-            cr.where(cb.equal(root, ski));
+            cr.where(cb.equal(jobOfferSkillJoin, ski));
             return session.createQuery(cr).getResultList();
         } catch (HibernateException hibernateException){
             System.err.println(hibernateException.getMessage());
@@ -187,7 +187,7 @@ public class JobOfferImplDAO implements JobOfferDAO{
             CriteriaQuery<JobOffer> cr = cb.createQuery(JobOffer.class);
             Root<JobOffer> root = cr.from(JobOffer.class);
             Join<JobOffer, Company> jobOfferSkillJoin = root.join("jobOffers");
-            cr.where(cb.equal(root, co));
+            cr.where(cb.equal(jobOfferSkillJoin, co));
             return session.createQuery(cr).getResultList();
         } catch (HibernateException hibernateException){
             System.err.println(hibernateException.getMessage());

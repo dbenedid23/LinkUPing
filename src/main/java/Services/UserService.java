@@ -6,6 +6,7 @@ package Services;
 
 import dao.CompanyImplDAO;
 import dao.UserImplDAO;
+import java.util.Calendar;
 import java.util.List;
 import model.*;
 
@@ -34,24 +35,24 @@ public class UserService {
         return skills;
 
     }
-    public List<LaboralExperience>getLaboral(String name){
+
+    public List<LaboralExperience> getLaboral(String name) {
         List<LaboralExperience> lab = uid.getUserLaboralExperience(name);
         return lab;
     }
-     public List<AcademicInfo>getInfo(String name){
+
+    public List<AcademicInfo> getInfo(String name) {
         List<AcademicInfo> aca = uid.getUserAcademic(name);
         return aca;
     }
-     
+
     public User createUser(String userName) {
         User u = new User();
         u.setNombre(userName);
         uid.createUser(u);
         return u;
     }
-    
-    
-    
+
     public boolean iniciarUser(String nombre, String password) {
         User user = uid.inicioUser(nombre, password);
         if (user != null) {
@@ -61,13 +62,32 @@ public class UserService {
         }
 
     }
-   
+
+    public boolean login(User u) {
+        User dbUser = uid.getByUser(u);
+        if (dbUser != null) {
+            if (u.getNombre().equals(dbUser.getNombre()) && u.getPassword().equals(dbUser.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void addJobExperience(User user, LaboralExperience lab, Company co) {
         lab.setCompany(co);
         lab.setUser(user);
         user.getLaboralExperiences().add(lab);
         uid.updateUser(user);
+    }
+
+    public void updateUser(User user) {
+        User userDB = uid.getUser(user.getId());
+        userDB.setTelephone(user.getTelephone());
+        userDB.setNombre(user.getNombre());
+        userDB.setPassword(user.getPassword());
+        userDB.setMail(user.getMail());
+        userDB.setDescription(user.getDescription());
+        uid.updateUser(userDB);
     }
 
     public void addSkill(User user, String nombre) {
@@ -79,7 +99,8 @@ public class UserService {
         uid.updateUser(user);
 
     }
-    public void addSkill(String userName, String skillName){
+
+    public void addSkill(String userName, String skillName) {
         Skill skills = new Skill(skillName);
         User user = new User(userName);
         user.getSkills().add(skills);
